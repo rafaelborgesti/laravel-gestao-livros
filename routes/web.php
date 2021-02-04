@@ -20,10 +20,6 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin',], function(){
     
 });
 
-Route::get('admin', function(){
-    return redirect('/admin/livros');
-})->name('admin');
-
 /*
 Route::get('/', function () {
     return view('welcome');
