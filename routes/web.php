@@ -13,9 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::group(['prefix'=>'admin','namespace' => 'Admin',], function(){
+    
+    Route::resource('categorias', 'CategoriaController');
+    
+});
+
+Route::get('admin', function(){})->name('admin');
+
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+*/
 
 Auth::routes();
 
