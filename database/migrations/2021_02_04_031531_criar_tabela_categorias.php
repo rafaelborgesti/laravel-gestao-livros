@@ -17,13 +17,13 @@ class CriarTabelaCategorias extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->string('nome', 100)->nullable(false);
-            $table->BigInteger('usuario_id')->unsigned();
+            $table->BigInteger('usuario_id')->unsigned()->nullable();
             $table->timestamp('data_cadastro');
             $table->timestamp('data_alteracao');
         });
 
         Schema::table('categorias', function (Blueprint $table) {
-            $table->foreign('usuario_id')->references('id')->on('users');
+            $table->foreign('usuario_id')->references('id')->on('users')->onDelete('set null');
         });
     }
 
