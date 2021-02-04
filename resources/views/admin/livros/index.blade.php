@@ -25,6 +25,9 @@
             <thead>
                 <tr>
                     <th scope="col">Livro</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Editora</th>
+                    <th scope="col">Preço</th>
                     <th scope="col" width="150px" >Ações</th>
                 </tr>
             </thead>
@@ -32,6 +35,9 @@
                 @foreach ($livros as $livro)
                 <tr>
                     <td>{{ $livro->titulo }}</td>
+                    <td>{{ $livro->nome_autor }}</td>
+                    <td>{{ $livro->editora }}</td>
+                    <td>R$ {{ $livro->preco }}</td>
                     <td>
                         <a href="{{ route('livros.edit',$livro->uuid) }}" class="btn-sm btn btn-primary">editar</a>
                         <a href="{{ route('livros.show',$livro->uuid) }}" class="btn-sm btn btn-info">detalhes</i></a>
