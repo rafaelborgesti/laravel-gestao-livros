@@ -17,7 +17,14 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin',], function(){
     
     Route::resource('categorias', 'CategoriaController');
     Route::resource('livros', 'LivroController');
+    Route::match(['POST','GET'],'livro/adicionar-capa/{id}','LivroController@adicionar_capa')->name('livro-capa.adicionar');
+    Route::post('livro/excluir-capa/{id}','LivroController@excluir_capa')->name('livro-capa.excluir');
+
     
+
+
+    //Route::get('imagem', 'LivroController');
+
 });
 
 /*

@@ -165,4 +165,56 @@ class LivroController extends Controller
             ->route('livros.index')
             ->withSuccess('Excluído com sucesso!');
     }
+
+    /**
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $uuid
+     * @return \Illuminate\Http\Response
+     */
+    public function adicionar_capa(Request $request, $uuid=0)
+    {
+
+        if (!$livro = Livro::where('uuid','=' ,$uuid)->first())
+            return redirect()->back();
+
+        if ($request->isMethod('post')){
+
+            $request->validate([
+                'image' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            ]);
+
+            $imageName = Str::uuid().'.'.request()->image->getClientOriginalExtension();
+            $request->image->move(public_path('images'), $imageName);
+
+            $livro->imagem_capa = $imageName;
+            $livro->update();
+
+            return redirect()
+                ->route('livro-capa.adicionar',$livro->uuid)
+                ->withSuccess('Adicionado com sucesso!');
+        }
+
+        return view('admin.imagens.create',compact('livro'));
+
+    }
+
+    /**
+     *
+     *
+     * @param  string  $uuid
+     * @return \Illuminate\Http\Response
+     */
+    public function excluir_capa($uuid)
+    {
+        if (!$livro = Livro::where('uuid','=' ,$uuid)->first())
+        return redirect()->back();
+        
+        $livro->imagem_capa = NULL;
+        $livro->update();
+
+        return redirect()
+            ->route('livro-capa.adicionar',$livro->uuid)
+            ->withSuccess('Excluído com sucesso!');
+    }
 }

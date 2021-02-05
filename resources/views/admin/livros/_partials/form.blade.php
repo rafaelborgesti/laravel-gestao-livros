@@ -60,4 +60,6 @@
         <input type="submit" value="Salvar" class="btn btn-success">
     </div>
 
+    <a href="{{ route('livro-capa.adicionar',$livro->uuid) }}" class="btn btn-success">Imagem capa</a>
+
 </div>

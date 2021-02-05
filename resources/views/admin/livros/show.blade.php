@@ -18,6 +18,16 @@
     <!-- /.card-header -->
     <div class="card-body">
 
+        @if ($livro->imagem_capa)
+        <div class="form-row align-items-center">
+            <div class="form-group col-md-12">
+            @if ($livro->imagem_capa)
+                <img class="img-thumbnail" src="{{ url('/').'/images/'.$livro->imagem_capa }}">
+            @endif
+            </div>
+        </div>
+        @endif
+
         <p><strong>Título: </strong>{{ $livro->titulo }}</p>
         <p><strong>ISBN: </strong>{{ $livro->isbn }}</p>
         <p><strong>Categoria: </strong>{{ $livro->categoria->nome }}</p>
