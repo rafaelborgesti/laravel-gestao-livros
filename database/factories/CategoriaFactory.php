@@ -3,14 +3,14 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Categoria;
+use App\User;
 use Faker\Generator as Faker;
-use Ramsey\Uuid\Rfc4122\UuidV4;
+use Illuminate\Support\Str;
 
 $factory->define(Categoria::class, function (Faker $faker) {
-
     return [
-        'nome' => $faker->name,
-        'usuario_id' => 1,
-        'uuid' => UuidV4::uuid4()
+        'nome' => $faker->sentence(1),
+        'usuario_id' => User::all()->random()->id,
+        'uuid' => Str::uuid()
     ];
 });

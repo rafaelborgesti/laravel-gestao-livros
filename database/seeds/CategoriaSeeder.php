@@ -3,7 +3,7 @@
 use App\Categoria;
 use Illuminate\Database\Seeder;
 
-class CategoriasTabelaSeeder extends Seeder
+class CategoriaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +12,6 @@ class CategoriasTabelaSeeder extends Seeder
      */
     public function run()
     {
-        //
-        factory(Categoria::class, 20)->create();
+        factory(Categoria::class, 10)->create();
     }
 }
